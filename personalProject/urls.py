@@ -17,12 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import path, include
 from petclub.views import HelloWorld
-from petclub.views import PetListAPIView
-from petclub.views import PetAPIView
+from petclub.views import PetListView
+from petclub.views import PersonView
 
 urlpatterns = [
     path('hi', HelloWorld.as_view(), name="helloworld"),
+    path('admin', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
-    path('petL', PetListAPIView.as_view(), name="petListView"),
-    path('pet', PetAPIView.as_view(), name="petListView"),
+    path('pets', PetListView.as_view(), name="petList"),
+    path('persons', PersonView.as_view(), name="person"),
 ]
